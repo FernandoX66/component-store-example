@@ -1,0 +1,25 @@
+{
+  "books": [
+    {
+      "id": 1,
+      "title": "Nosotros en la Luna",
+      "author": "Alice Kellen",
+      "cover": "assets/img/nosotros-en-la-luna.jpeg",
+      "price": 23.0
+    },
+    {
+      "id": 2,
+      "title": "It",
+      "author": "Stephen King",
+      "cover": "assets/img/it.jpeg",
+      "price": 30.0
+    },
+    {
+      "id": 3,
+      "title": "La desaparición de Annie Thorne",
+      "author": "C. J. Tudor",
+      "cover": "assets/img/desaparicion-annie.jpg",
+      "price": 16.95
+    }
+  ]
+}

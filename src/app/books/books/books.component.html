@@ -1,0 +1,63 @@
+<div class="w-[95%] max-w-screen-lg mx-auto px-6">
+  <button
+    (click)="onAddClick()"
+    class="bg-[#72aaba] hover:bg-[#82bfd0] active:bg-[#6799a7] text-white text-sm w-40 p-3 rounded-md mt-4"
+  >
+    + Add book
+  </button>
+</div>
+
+<div class="grid grid-cols-3 gap-8 p-6 w-[95%] max-w-screen-lg mx-auto">
+  @if (favorites$ | async; as favorites) { @for (book of books$ | async; track
+  $index) {
+  <div class="p-4 flex-1 bg-white rounded-lg">
+    <div class="w-full h-64 mb-6">
+      <img
+        class="object-cover w-full h-full"
+        [src]="book.cover"
+        [alt]="book.title"
+      />
+    </div>
+
+    <div class="flex justify-between gap-2 items-center">
+      <div>
+        <h2 class="text">{{ book.title }}</h2>
+        <h3 class="text-xs font-light">By {{ book.author }}</h3>
+      </div>
+
+      <button
+        (click)="toggleFavorite(book.id)"
+        [ngClass]="{
+          'bg-[#ffe1ed]': favorites.includes(book.id),
+          'bg-gray-100': !favorites.includes(book.id)
+        }"
+        class="min-w-10 min-h-10 flex hover:opacity-80 justify-center items-center rounded-sm"
+      >
+        <div class="w-5">
+          @if (favorites.includes(book.id)) {
+          <img
+            class="w-full h-full"
+            src="assets/svg/favorite-active.svg"
+            alt="Favorite icon"
+          />
+          } @else {
+          <img
+            class="w-full h-full"
+            src="assets/svg/favorite.svg"
+            alt="Favorite icon"
+          />
+          }
+        </div>
+      </button>
+    </div>
+
+    <p class="mt-3">{{ book.price | currency }}</p>
+
+    <button
+      class="bg-[#81b197] hover:bg-[#95cbae] active:bg-[#76a28b] text-white text-sm w-full p-3 rounded-md mt-4"
+    >
+      + Add to cart
+    </button>
+  </div>
+  } }
+</div>
